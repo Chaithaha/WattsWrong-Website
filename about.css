@@ -1,0 +1,511 @@
+/* Theme Variables: Dark Corporate + Electric Accent (Copied from styles.css for self-containment) */
+:root {
+  --padding-x: 5rem;
+  --padding-y: 5rem;
+  --electric-blue: #00B4D8;
+  --dark-navy: #0D1B2A;
+  --charcoal: #1C1F26;
+  --toxic-yellow: #FFDD00;
+  --light-gray: #f1f1f1;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.4s ease-in-out;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--charcoal);
+  color: var(--light-gray);
+  font-family: 'Kanit', sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+  color: var(--toxic-yellow);
+}
+
+p {
+  font-weight: 400;
+  max-width: 75ch;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: var(--electric-blue);
+  font-weight: 800;
+}
+
+a:hover {
+  color: var(--toxic-yellow);
+  text-shadow: 0 0 5px var(--electric-blue);
+}
+
+/* Header Styling (Copied from styles.css for consistency) */
+header {
+  background-color: var(--dark-navy);
+  display: flex;
+  padding: 0.5rem var(--padding-x);
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+header img {
+  max-width: 70px;
+  filter: brightness(1.1);
+}
+
+header img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.4);
+}
+
+.header-menu ul {
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+  font-size: 20px;
+}
+
+.header-menu a {
+  color: white;
+}
+
+.header-menu a:hover {
+  color: var(--toxic-yellow);
+  transform: scale(1.1);
+}
+
+.active-link {
+    color: var(--toxic-yellow) !important;
+}
+
+/* Footer Styling (Copied from styles.css for consistency) */
+footer {
+  padding: var(--padding-y) var(--padding-x);
+  background-color: var(--dark-navy);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 1px 4px rgba(255,255,255,0.05);
+}
+
+footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style-type: none;
+  align-items: center;
+}
+
+footer a {
+  color: white;
+  font-size: 18px;
+}
+
+footer a:hover {
+  color: var(--toxic-yellow);
+  transform: scale(1.05);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+  color: white;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.footer-logo {
+  opacity: 1; /* Always visible for about page */
+}
+
+/* Preloader (Copied from styles.css for consistency) */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--charcoal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#preloader img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 20px;
+  animation: bounce 1s infinite alternate;
+}
+
+#preloader p {
+  color: var(--light-gray);
+  font-size: 1.2rem;
+  margin-top: 20px;
+  text-align: center;
+  max-width: 80%;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+
+/* Scroll Fade In (Copied from styles.css for consistency) */
+.scroll-fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* New Tagline Section Styling */
+.tagline-section {
+    background-color: var(--dark-navy);
+    padding: 3rem var(--padding-x);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; /* Needed for positioning pseudo-elements */
+    margin-bottom: 5rem; /* Add some space below the section itself */
+}
+
+.tagline-section::before,
+.tagline-section::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Adjust width to make them "long" */
+    height: 2px;
+    background-color: var(--electric-blue); /* Emphasis color */
+    opacity: 0.5; /* Slightly subtle */
+}
+
+.tagline-section::before {
+    top: 0;
+}
+
+.tagline-section::after {
+    bottom: 0;
+}
+
+.tagline-section .tagline {
+    font-size: 2.5rem; /* Adjust as needed */
+    color: var(--toxic-yellow);
+    margin: 0;
+    position: relative; /* Ensure text is above pseudo-elements */
+    z-index: 1;
+}
+
+/* About Page Specific Layout and Design */
+main {
+    padding-top: 0; /* Sections handle their own padding */
+}
+
+.about-hero-section {
+    background-color: var(--dark-navy);
+    padding: 2rem var(--padding-x);
+    margin-top: 70px; /* To account for fixed header */
+    align-items: center; /* Still useful if content is centered by other means */
+    min-height: 200px;
+    text-align: center; /* Centering for its direct content */
+}
+
+.about-hero-content {
+    text-align: center;
+}
+
+.about-minifig-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--charcoal);
+    border: 2px solid var(--toxic-yellow);
+    padding: 10px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    display: block; /* Ensure it's a block for margin auto to work */
+    margin-left: auto; /* Center the image */
+    margin-right: auto; /* Center the image */
+}
+
+.about-hero-section h1 {
+    font-size: 3rem;
+    color: var(--toxic-yellow);
+    background: none; /* Override gradient from global h1 */
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    margin-bottom: 0;
+}
+
+.about-section {
+    padding: 3rem var(--padding-x);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--charcoal);
+}
+
+.about-section:nth-child(even) {
+    background-color: #1a1d23; /* Slightly different shade for alternating sections */
+}
+
+.section-inner-wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Ensure the inner content is centered */
+}
+
+.section-header {
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    color: var(--light-gray);
+    margin-bottom: 0.5rem;
+}
+
+.content-with-image {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.content-with-image .content-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--dark-navy);
+    border: 2px solid var(--electric-blue);
+    padding: 5px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.content-with-image .content-text {
+    flex-grow: 1;
+}
+
+.legacy-section .section-header h2 {
+    color: var(--toxic-yellow);
+}
+
+.blockquote-wrapper {
+    position: relative;
+    margin: 3rem 0;
+}
+
+.quote-icon {
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    font-size: 5rem;
+    color: var(--electric-blue);
+    opacity: 0.3;
+    font-family: serif;
+    line-height: 1;
+}
+
+.legacy-section blockquote {
+    border-left: 4px solid var(--toxic-yellow);
+    padding: 1.5rem 2rem 1.5rem 3rem;
+    margin: 0;
+    background: rgba(255, 221, 0, 0.1);
+    border-radius: 0 8px 8px 0;
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+.news-section .section-header h2 {
+    color: var(--toxic-yellow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.warning-icon {
+    color: var(--toxic-yellow);
+    font-size: 1.5rem;
+}
+
+.news-subtitle {
+    color: var(--light-gray);
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.news-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--dark-navy);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+}
+
+.news-icon {
+    font-size: 2rem;
+    color: var(--electric-blue);
+    flex-shrink: 0;
+}
+
+.news-item a {
+    color: var(--light-gray);
+    text-decoration: none;
+    font-weight: 400;
+    flex-grow: 1;
+}
+
+.news-item a:hover {
+    color: var(--toxic-yellow);
+    text-shadow: none;
+}
+
+.links-section {
+    background-color: var(--dark-navy); /* Background for this section */
+    padding: var(--padding-y) var(--padding-x);
+}
+
+.cta-section-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.links-section .content-with-image .content-image {
+    border-color: var(--toxic-yellow);
+}
+
+.connect-text {
+    color: var(--light-gray);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.links-section .button {
+    background-color: var(--electric-blue);
+    color: var(--dark-navy);
+    border: none;
+}
+
+.links-section .button:hover {
+    background-color: var(--toxic-yellow);
+    color: var(--dark-navy);
+    box-shadow: 0 0 15px rgba(255, 221, 0, 0.5);
+    animation: none; /* Remove pulse animation if not desired */
+}
+
+.footer-nav ul {
+    display: flex;
+    flex-direction: row; /* Horizontal links */
+    gap: 1.5rem;
+    list-style-type: none; /* Remove bullet points */
+    align-items: center;
+}
+
+.footer-nav a {
+    font-size: 1.1rem;
+    color: var(--light-gray);
+}
+
+.footer-nav a:hover {
+    color: var(--toxic-yellow);
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments for about page */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 2rem 1rem;
+    }
+
+    .about-hero-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .about-hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .content-with-image {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content-with-image .content-image {
+        margin-bottom: 1rem;
+    }
+
+    .legacy-section blockquote {
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem 1rem 2rem;
+    }
+
+    .quote-icon {
+        font-size: 4rem;
+        top: -20px;
+        left: -10px;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-section-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-nav ul {
+        flex-direction: column;
+    }
+} 
