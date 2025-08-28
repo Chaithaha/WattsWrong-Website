@@ -3,6 +3,7 @@ window.addEventListener('load', function() {
   if (preloader) {
     setTimeout(function() {
       preloader.classList.add('fade-out');
+      document.body.classList.add('loaded');
     }, 1000);
   }
 
